@@ -12,8 +12,8 @@ import sobel
 
 def main():
     model = define_model(is_resnet=False, is_densenet=False, is_senet=True)
-    model = torch.nn.DataParallel(model)
-    model.load_state_dict(torch.load('./pretrained_model/model_senet', map_location=torch.device('cpu')))
+    model = torch.nn.DataParallel(model).cuda()
+    model.load_state_dict(torch.load('./pretrained_model/model_senet'))
 
     test_loader = loaddata.getTestingData(1)
     test(test_loader, model, 0.25)
@@ -35,11 +35,11 @@ def test(test_loader, model, thre):
     for i, sample_batched in enumerate(test_loader):
         image, depth = sample_batched['image'], sample_batched['depth']
 
-        # depth = depth.cuda(async=True)
-        # image = image.cuda()
+        depth = depth.cuda(async=True)
+        image = image.cuda()
 
-        # image = torch.autograd.Variable(image, volatile=True)
-        # depth = torch.autograd.Variable(depth, volatile=True)
+        image = torch.autograd.Variable(image, volatile=True)
+        depth = torch.autograd.Variable(depth, volatile=True)
  
         output = model(image)
         output = torch.nn.functional.upsample(output, size=[depth.size(2),depth.size(3)], mode='bilinear')
@@ -99,7 +99,7 @@ def define_model(is_resnet, is_densenet, is_senet):
    
 
 def edge_detection(depth):
-    get_edge = sobel.Sobel()
+    get_edge = sobel.Sobel().cuda()
 
     edge_xy = get_edge(depth)
     edge_sobel = torch.pow(edge_xy[:, 0, :, :], 2) + \

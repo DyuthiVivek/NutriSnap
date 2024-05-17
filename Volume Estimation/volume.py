@@ -42,21 +42,45 @@ def get_bbox(points, h, w):
 
     return mask2box(mask)
 
+# def get_scale(points, img, lowest):
+#     bbox = get_bbox(points, img.shape[0], img.shape[1])
+#     diameter = (bbox[2]-bbox[0]+1+bbox[3]-bbox[1]+1)/2
+#     len_per_pix = plate_diameter/float(diameter)
+#     avg = 0
+#     k = 0
+
+#     for point in points:
+#         avg += img[point[1]][point[0]]
+#         k += 1
+#     avg = avg/float(k)
+#     depth = lowest - avg
+#     depth_per_pix = plate_depth/depth
+
+#     return len_per_pix, depth_per_pix
+
 def get_scale(points, img, lowest):
     bbox = get_bbox(points, img.shape[0], img.shape[1])
-    diameter = (bbox[2]-bbox[0]+1+bbox[3]-bbox[1]+1)/2
-    len_per_pix = plate_diameter/float(diameter)
+    diameter = (bbox[2] - bbox[0] + 1 + bbox[3] - bbox[1] + 1) / 2
+    len_per_pix = plate_diameter / float(diameter)
     avg = 0
     k = 0
+
     for point in points:
-        avg += img[point[1]][point[0]]
-        k += 1
-    avg = avg/float(k)
+        try:
+            avg += img[point[1]][point[0]]
+            k += 1
+        except IndexError:
+            print(f"Point {point} is out of image bounds. Skipping this point.")
+            continue
+
+    if k == 0:
+        raise ValueError("All points are out of image bounds.")
+
+    avg = avg / float(k)
     depth = lowest - avg
-    depth_per_pix = plate_depth/depth
+    depth_per_pix = plate_depth / depth
 
     return len_per_pix, depth_per_pix
-
 
 def cal_volume(points, img, len_per_pix, depth_per_pix, lowest):
 

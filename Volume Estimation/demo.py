@@ -53,38 +53,43 @@ def main():
     model.eval()
     print
     img = cv2.imread(args.img)
-    img = np.float32(img)  # Convert image to float32 data type
-
+    #img = np.float32(img)  # Convert image to float32 data type
+    
 
     nyu2_loader = loaddata.readNyu2(args.img)
   
-    test(nyu2_loader, model, img.shape[1], img.shape[0])
+    return test(nyu2_loader, model, img.shape[1], img.shape[0])
 
 
 def test(nyu2_loader, model, width, height):
-    for i, image in enumerate(nyu2_loader):     
-        image = torch.autograd.Variable(image, volatile=True)
-        out = model(image)
-        out = out.view(out.size(2),out.size(3)).data.cpu().numpy()
-        max_pix = out.max()
-        min_pix = out.min()
-        out = (out-min_pix)/(max_pix-min_pix)*255
-        out = cv2.resize(out,(width,height),interpolation=cv2.INTER_CUBIC)
-        cv2.imwrite(os.path.join(args.output, "out_grey.png"),out)
-        out_grey = cv2.imread(os.path.join(args.output, "out_grey.png"),0)
-        out_color = cv2.applyColorMap(out_grey, cv2.COLORMAP_JET)
-        cv2.imwrite(os.path.join(args.output, "out_color.png"),out_color)
-        vol = get_volume(out_grey, args.json)
-        print("Volume:")
-        print(vol)
-        print("unit: cm^3")
-        out_file = open(os.path.join(args.output, "out.txt"), "w")
-        out_file.write("Volume:\n")
-        out_file.write(str(vol))
-        out_file.write("\n")
-        out_file.write("unit: cm^3")
-        out_file.close()
-        get_mask(out_grey, args.json)
-        
-if __name__ == '__main__':
-    main()
+    volumes = []
+    with torch.no_grad():
+        for i, image in enumerate(nyu2_loader):     
+            image = torch.autograd.Variable(image, volatile=True)
+            image = image[:, :3, :, :]
+            out = model(image)
+            out = out.view(out.size(2),out.size(3)).data.cpu().numpy()
+            max_pix = out.max()
+            min_pix = out.min()
+            out = (out-min_pix)/(max_pix-min_pix)*255
+            out = cv2.resize(out,(width,height),interpolation=cv2.INTER_CUBIC)
+            cv2.imwrite(os.path.join(args.output, "out_grey.png"),out)
+            out_grey = cv2.imread(os.path.join(args.output, "out_grey.png"),0)
+            out_color = cv2.applyColorMap(out_grey, cv2.COLORMAP_JET)
+            cv2.imwrite(os.path.join(args.output, "out_color.png"),out_color)
+            vol = get_volume(out_grey, args.json)
+            print("Volume:")
+            print(vol)
+            volumes.append(vol)
+            print("unit: cm^3")
+            out_file = open(os.path.join(args.output, "out.txt"), "w")
+            out_file.write("Volume:\n")
+            out_file.write(str(vol))
+            out_file.write("\n")
+            out_file.write("unit: cm^3")
+            out_file.close()
+            get_mask(out_grey, args.json)
+    return volumes
+            
+# if __name__ == '__main__':
+#     main()
