@@ -1,0 +1,54 @@
+import json
+IMAGE_PATH = "/home/dyuthi/Pictures/Screenshots/food.png"
+def convert_to_labelme(result):
+    image_info = result['image']
+    predictions = result['predictions']
+
+    labelme_data = {
+        "version": "4.5.6",
+        "flags": {},
+        "shapes": []
+    }
+
+    for prediction in predictions:
+        points = [{'x': point['x'], 'y': point['y']} for point in prediction['points']]
+        shape = {
+            "label": prediction['class'],
+            "points": points,
+            "group_id": None,
+            "shape_type": "polygon",
+            "flags": {}
+        }
+        labelme_data['shapes'].append(shape)
+
+    labelme_data["imagePath"] = IMAGE_PATH  # Provide the image path here
+    labelme_data["imageData"] = None  # You can optionally include base64 encoded image data
+    labelme_data["imageHeight"] = image_info['height']
+    labelme_data["imageWidth"] = image_info['width']
+
+    return json.dumps(labelme_data, indent=2)
+
+from inference_sdk import InferenceHTTPClient
+
+CLIENT = InferenceHTTPClient(
+    api_url="https://outline.roboflow.com",
+    api_key="McnrQqcI6NyxbRYaSnjd"
+)
+
+result = CLIENT.infer(IMAGE_PATH, model_id="food-usjv9/1")
+
+# Assuming `result` is the dictionary returned by the inference SDK
+labelme_json = convert_to_labelme(result)
+print(labelme_json)
+
+
+
+# Specify the file path where you want to save the JSON data
+output_file_path = "labelme_data.json"
+
+# Write the JSON data to the file
+with open(output_file_path, "w") as json_file:
+    json_file.write(labelme_json)
+
+print(f"LabelMe JSON data has been saved to {output_file_path}")
+
