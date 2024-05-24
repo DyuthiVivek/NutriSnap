@@ -78,10 +78,10 @@ def test(nyu2_loader, model, width, height):
             out_color = cv2.applyColorMap(out_grey, cv2.COLORMAP_JET)
             cv2.imwrite(os.path.join(args.output, "out_color.png"),out_color)
             vol = get_volume(out_grey, args.json)
-            print("Volume:")
-            print(vol)
+            # print("Volume:")
+            # print(vol)
             volumes.append(vol)
-            print("unit: cm^3")
+            # print("unit: cm^3")
             out_file = open(os.path.join(args.output, "out.txt"), "w")
             out_file.write("Volume:\n")
             out_file.write(str(vol))
@@ -89,6 +89,8 @@ def test(nyu2_loader, model, width, height):
             out_file.write("unit: cm^3")
             out_file.close()
             get_mask(out_grey, args.json)
+    for v in volumes[0]:
+        volumes[0][v] //= 3
     return volumes
             
 # if __name__ == '__main__':
