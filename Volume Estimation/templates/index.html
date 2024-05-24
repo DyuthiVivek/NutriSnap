@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NutriSnap</title>
+    </head>
+
+    <body>
+        <h1>Upload Your Image</h1>
+        <form id="upload-form" method="POST" enctype="multipart/form-data">
+            <label for="image-upload">Select Image:</label>
+            <input type="file" id="image-upload" name="image-upload" accept="image/*">
+            <button type="submit">Upload</button>
+        </form>
+        <p> {{ message }} </p>
+
+        {% if total %}
+        <h2>Nutritional Information</h2>
+        <ul>
+            <li> Calories: {{ total["calories"] }} kcal </li>
+            <li> Protein: {{ total["protein"] }} g </li>
+            <li> Carbohydrates: {{ total["carbohydrates"] }} g </li>
+            <li> Fat: {{ total["fat"] }} g </li>
+            <li> Dietary fiber: {{ total["fiber"] }} g </li>
+        </ul>
+        {% endif %}
+
+        {% if info %}
+        {% for key in info.keys() %}
+            <h3> {{ key }} </h2>
+            <ul>
+                <li> Calories: {{ info[key]["calories"] }} kcal </li>
+                <li> Protein: {{ info[key]["protein"] }} g </li>
+                <li> Carbohydrates: {{ info[key]["carbohydrates"] }} g </li>
+                <li> Fat: {{ info[key]["fat"] }} g </li>
+                <li> Dietary fiber: {{ info[key]["fiber"] }} g </li>
+            </ul>
+        {% endfor %}
+        {% endif %}
+
+    </body>
+</html>
