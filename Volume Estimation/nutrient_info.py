@@ -374,7 +374,7 @@ food_info = {
         "density": 1.05,
         "calories": 1.5,
         "protein": 0.2,
-        "carbohydrates": 0.05,
+        "carbohydratesdensity": 0.05,
         "fat": 0.08,
         "fiber": 0.01,
         "source": "Custom recipe analysis"
@@ -401,7 +401,7 @@ food_info = {
         "density": 1.05,
         "calories": 1.8,
         "protein": 0.02,
-        "carbohydrates": 0.3,
+        "carbohydratesdensity": 0.3,
         "fat": 0.05,
         "fiber": 0.03,
         "source": "Custom recipe analysis"

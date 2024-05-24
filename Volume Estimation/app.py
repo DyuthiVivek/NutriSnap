@@ -3,7 +3,7 @@ import main, nutrient_info
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = './input'
 INPUT_FOLDER = './input'
 
 @app.route('/', methods=['GET', 'POST'])
@@ -21,11 +21,11 @@ def upload_video():
             name, ext = filename.split('.')
 
             if ext in allowed_extensions:
-                image_path = f'{UPLOAD_FOLDER}/{filename}'
-                output_path = f'{INPUT_FOLDER}/{name}.json'
+                image_path = f'{UPLOAD_FOLDER}/test.jpg'
+                output_path = f'{INPUT_FOLDER}/test.json'
                 image_file.save(image_path)
                 message = f'Image {filename} uploaded successfully!'
-                volumes = main.main(image_path, output_path)
+                volumes = main._main(image_path, output_path)
 
                 for item in volumes:
                     weight = nutrient_info.food_info[item]["density"] * volumes[item]
