@@ -29,7 +29,7 @@
 
         {% if info %}
         {% for key in info.keys() %}
-            <h3> {{ key }} </h2>
+            <h3> {{ key }} - {{ info[key]["weight"] }} g </h2>
             <ul>
                 <li> Calories: {{ info[key]["calories"] }} kcal </li>
                 <li> Protein: {{ info[key]["protein"] }} g </li>

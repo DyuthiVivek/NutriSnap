@@ -25,7 +25,6 @@ def upload_video():
                 output_path = f'{INPUT_FOLDER}/{name}.json'
                 image_file.save(image_path)
                 message = f'Image {filename} uploaded successfully!'
-                # volumes = {"Chicken_biryani": 4, "Curd_rice": 10}
                 volumes = main.main(image_path, output_path)
 
                 for item in volumes:
