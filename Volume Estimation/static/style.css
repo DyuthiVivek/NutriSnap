@@ -20,7 +20,7 @@ form {
     flex-wrap: wrap;
 }
 
-.info-box {
+.info-box-1 {
     border: 1px solid #ddd;
     padding: 30px;
     padding-top: 5px;
@@ -28,4 +28,44 @@ form {
     margin: 10px;
     border-radius: 10px;
     background-color: #9ED2C6;
+}
+
+.info-box-2 {
+    border: 1px solid #ddd;
+    padding: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #faedcb;
+}
+
+.info-box-3 {
+    border: 1px solid #ddd;
+    padding: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #f2c6de;
+}
+
+.info-box-4 {
+    border: 1px solid #ddd;
+    padding: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #dbcdf0;
+}
+
+.info-box-5 {
+    border: 1px solid #ddd;
+    padding: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #c6def1;
 }

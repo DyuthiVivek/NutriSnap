@@ -67,7 +67,7 @@
         {% if info %}
         <div class="info-boxes">
         {% for key in info.keys() %}
-        <div class="info-box">
+        <div class="info-box-{{ loop.index }}">
             <h3> {{ key }} - {{ '%0.2f' | format(info[key]["weight"]) }} g </h2>
             <ul style="list-style-type: none; padding-left: 0;">
                 <li> Calories: {{ '%0.2f' | format(info[key]["calories"]) }} kcal </li>
