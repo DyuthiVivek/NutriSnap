@@ -244,7 +244,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Pulav": {
-        "density": 0.95,
+        "density": 0.45,
         "calories": 2.0,
         "protein": 0.05,
         "carbohydrates": 0.25,

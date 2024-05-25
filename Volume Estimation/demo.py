@@ -91,6 +91,7 @@ def test(nyu2_loader, model, width, height):
             get_mask(out_grey, args.json)
     for v in volumes[0]:
         volumes[0][v] //= 3
+        print(v, volumes[0][v])
     return volumes
             
 # if __name__ == '__main__':
