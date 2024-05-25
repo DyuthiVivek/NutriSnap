@@ -26,8 +26,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx = document.getElementById('pieChart').getContext('2d');
-    const labels = ['Protein', 'Carbohydrates', 'Fat', 'Fiber', 'Other'];
-    const data = [{{ total["protein"] }}, {{ total["carbohydrates"] }}, {{ total["fat"] }}, {{ total["fiber"] }}, {{ total["other"] }}];
+    const labels = ['Protein', 'Carbohydrates', 'Fat', 'Fiber'];
+    const data = [{{ total["protein"] }}, {{ total["carbohydrates"] }}, {{ total["fat"] }}, {{ total["fiber"] }}];
 
     const pieChart = new Chart(ctx, {
       type: 'pie',
