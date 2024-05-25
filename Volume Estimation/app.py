@@ -39,7 +39,8 @@ def upload_video():
                         "fiber": nutrient_info.food_info[item]["fiber"] * weight
                     }
 
-                    info[item] = item_info
+                    formatted_item = item.replace("_", " ").title()
+                    info[formatted_item] = item_info
 
                     total = {
                         "calories" : sum(info[item]["calories"] for item in info),
@@ -49,6 +50,8 @@ def upload_video():
                         "fiber" : sum(info[item]["fiber"] for item in info),
                     }
 
+                    major_nutrients = total["carbohydrates"] + total["protein"] + total["fat"] + total["fiber"]
+                    total["other"] = sum(info[item]["weight"] for item in info) - major_nutrients
             else:
                 message = 'Invalid image format. Allowed formats: PNG, JPG, JPEG, GIF'
         else:
