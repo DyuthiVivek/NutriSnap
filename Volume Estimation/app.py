@@ -31,6 +31,7 @@ def slow_loading_function(image_path, output_path, session_id):
 
 @app.route('/')
 def index():
+    session_data.clear()
     return render_template('index.html')
 
 @app.route('/loading', methods=['POST'])
@@ -49,6 +50,7 @@ def loading():
                 session_id = request.cookies.get("session")  # Use request.cookies.get("session") instead of request.sid
 
                 session["session_id"] = session_id
+ 
 
                 # Start the background thread
                 thread = threading.Thread(target=slow_loading_function, args=(image_path, output_path, session_id))
