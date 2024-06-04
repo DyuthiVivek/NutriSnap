@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriSnap Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <script src="https://kit.fontawesome.com/4dfa797fc7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <div>
+    <a href="{{ url_for('index') }}">
+        <i class="fa fa-arrow-left fa-2x" aria-hidden="true" style="padding-top: 20px; padding-left: 20px;"></i>
+    </a>
+    </div>
+    <img src="{{ url_for('download_file') }}" style="padding-top: 20px; padding-left: 20px;">
     {% if total %}
     <h2>Total Nutritional Information</h2>
     <div id="canvas-container" style="height: 300px">

@@ -98,9 +98,8 @@
     <h1>Upload Your Image</h1>
     <form id="upload-form" method="POST" action="{{ url_for('loading') }}" enctype="multipart/form-data">
         <label for="image-upload">Select Image:</label>
-        <input type="file" id="image-upload" name="image-upload" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
+        <input type="file" id="image-upload" name="image-upload" accept="image/*" onchange="this.form.submit()">
+      </form>
     <p id="message" style="text-align: center;">{{ message }}</p>
 </body>
 

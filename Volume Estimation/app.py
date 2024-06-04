@@ -2,7 +2,7 @@
 
 import time
 import threading
-from flask import Flask, session, request, render_template, redirect, url_for, jsonify
+from flask import Flask, session, request, render_template, redirect, url_for, jsonify, send_from_directory
 from flask_session import Session
 import main, nutrient_info
 
@@ -27,6 +27,9 @@ def slow_loading_function(image_path, output_path, session_id):
 
     session_data[session_id] = {"info": info, "total": total}
 
+@app.route('/uploads')
+def download_file():
+  return send_from_directory(INPUT_FOLDER, "test.jpg")
 
 @app.route('/')
 def index():
@@ -40,12 +43,13 @@ def loading():
         if image_file:
             filename = image_file.filename
             allowed_extensions = {'png', 'jpg', 'jpeg', 'gif'}
-            name, ext = filename.split('.')
+            ext = filename.split('.')[1]
+
             if ext in allowed_extensions:
                 image_path = f'{UPLOAD_FOLDER}/test.jpg'
                 output_path = f'{INPUT_FOLDER}/test.json'
                 image_file.save(image_path)
-                
+
                 session_id = request.cookies.get("session")  # Use request.cookies.get("session") instead of request.sid
 
                 session["session_id"] = session_id

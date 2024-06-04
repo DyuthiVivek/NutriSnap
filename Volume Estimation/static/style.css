@@ -118,4 +118,26 @@ form {
     }
 }
 
+a, a:visited {
+    color: black; /* Replace "blue" with your desired color */
+}
+
 /*  CSS loader credit: https://loading.io/css/ */
+
+.image-upload {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #ddd;  /* Customize background color */
+}
+  
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+  
+.image-upload:hover {
+    background-color: #ccc;  /* Customize hover background color */
+}
