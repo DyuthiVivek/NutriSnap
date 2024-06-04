@@ -19,7 +19,6 @@ INPUT_FOLDER = './input'
 session_data = {}
 
 def slow_loading_function(image_path, output_path, session_id):
-    """Simulates a time-consuming process"""
     volumes = main._main(image_path, output_path)
     info = {}
     total = {}
