@@ -1,22 +1,14 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriSnap</title>
+    <title>NutriSnap Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
 </head>
 
 <body>
-    <h1>Upload Your Image</h1>
-    <form id="upload-form" method="POST" action="{{ url_for('loading') }}" enctype="multipart/form-data">
-        <label for="image-upload">Select Image:</label>
-        <input type="file" id="image-upload" name="image-upload" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
-    <p id="message" style="text-align: center;">{{ message }}</p>
-
     {% if total %}
     <h2>Total Nutritional Information</h2>
     <div id="canvas-container" style="height: 300px">
@@ -81,27 +73,6 @@
     </div>
     {% endif %}
 
-</body>
-
-</html> -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriSnap</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
-</head>
-
-<body>
-    <h1>Upload Your Image</h1>
-    <form id="upload-form" method="POST" action="{{ url_for('loading') }}" enctype="multipart/form-data">
-        <label for="image-upload">Select Image:</label>
-        <input type="file" id="image-upload" name="image-upload" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
-    <p id="message" style="text-align: center;">{{ message }}</p>
 </body>
 
 </html>

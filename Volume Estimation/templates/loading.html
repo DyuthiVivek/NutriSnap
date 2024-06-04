@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Loading page</title>
+</head>
+
+<body>
+    <h1 class="centered">Loading page...</h1>
+
+    <p class="centered">Please wait while we process your image.</p>
+    <div class="centered">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <p class="centered">Once the job is done, you'll be redirected to the results page.</p>
+
+    <script>
+        function checkStatus() {
+            fetch("{{ url_for('check_status') }}")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "done") {
+                        window.location.href = "{{ url_for('results') }}";
+                    } else {
+                        setTimeout(checkStatus, 1000);
+                    }
+                });
+        }
+
+        checkStatus();
+    </script>
+</body>
+
+</html>

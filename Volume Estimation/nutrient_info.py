@@ -1,6 +1,6 @@
 food_info = {
     "Bindi": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.4,
         "protein": 0.02,
         "carbohydrates": 0.07,
@@ -9,7 +9,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Brinjal_gravy": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.8,
         "protein": 0.03,
         "carbohydrates": 0.1,
@@ -18,7 +18,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Cabbage": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.3,
         "protein": 0.02,
         "carbohydrates": 0.05,
@@ -27,7 +27,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Cauliflower": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.25,
         "protein": 0.02,
         "carbohydrates": 0.05,
@@ -36,7 +36,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Channa_masala": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.6,
         "protein": 0.03,
         "carbohydrates": 0.1,
@@ -45,8 +45,8 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Chapati": {
-        "density": 0.75,
-        "calories": 2.5,
+        "density": 0.5,
+        "calories": 1.0,
         "protein": 0.08,
         "carbohydrates": 0.45,
         "fat": 0.03,
@@ -63,8 +63,8 @@ food_info = {
         "source": "USDA FoodData Central"
     },
     "Chicken_biryani": {
-        "density": 0.95,
-        "calories": 2.0,
+        "density": 0.1,
+        "calories": 0.8,
         "protein": 0.05,
         "carbohydrates": 0.25,
         "fat": 0.08,
@@ -100,7 +100,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Cocunut_rice": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.2,
         "protein": 0.03,
         "carbohydrates": 0.2,
@@ -163,7 +163,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Kurma": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.8,
         "protein": 0.1,
         "carbohydrates": 0.25,
@@ -226,7 +226,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Pongal": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.5,
         "protein": 0.04,
         "carbohydrates": 0.2,
@@ -271,7 +271,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Salna": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.8,
         "protein": 0.1,
         "carbohydrates": 0.2,
@@ -298,7 +298,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Tamarind_rice": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.8,
         "protein": 0.03,
         "carbohydrates": 0.3,
@@ -316,7 +316,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "Veg_biryani": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 2.0,
         "protein": 0.05,
         "carbohydrates": 0.25,
@@ -325,7 +325,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "White_rice": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.0,
         "protein": 0.02,
         "carbohydrates": 0.25,
@@ -334,7 +334,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "bajji": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 2.8,
         "protein": 0.05,
         "carbohydrates": 0.3,
@@ -343,7 +343,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "beans": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 1.0,
         "protein": 0.03,
         "carbohydrates": 0.25,
@@ -352,7 +352,7 @@ food_info = {
         "source": "USDA FoodData Central"
     },
     "binndi": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.3,
         "protein": 0.02,
         "carbohydrates": 0.05,
@@ -416,7 +416,7 @@ food_info = {
         "source": "Custom recipe analysis"
     },
     "lemon_rice": {
-        "density": 0.95,
+        "density": 0.75,
         "calories": 0.6,
         "protein": 0.02,
         "carbohydrates": 0.1,
