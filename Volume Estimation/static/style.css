@@ -141,3 +141,7 @@ a, a:visited {
 .image-upload:hover {
     background-color: #ccc;  /* Customize hover background color */
 }
+
+img {
+    height: 250px;
+}
